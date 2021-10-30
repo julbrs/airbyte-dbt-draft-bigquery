@@ -4,13 +4,8 @@ select
     'drift' as source,
     id,
     status,
-    inboxId,
-    contactId,
-    createdAt,
-    updatedAt,
-    participants,
-    conversationTags,
-    relatedPlaybookId,
+    TIMESTAMP_MILLIS(createdAt) as created_at,
+    TIMESTAMP_MILLIS(updatedAt) as updated_at,
     _airbyte_emitted_at,
     _airbyte_drift_conversations_hashid
 from {{ ref('drift_conversations_ab3') }}
