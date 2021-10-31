@@ -7,11 +7,14 @@
     ) }}
 -- Final base SQL model
 select
-    'drift' as source,
+    source,
     id,
     status,
     TIMESTAMP_MILLIS(createdAt) as created_at,
     TIMESTAMP_MILLIS(updatedAt) as updated_at,
+    null as count_conversation_parts,
+    null as first_response_time_min,
+    null as total_response_time_min,
     _airbyte_emitted_at,
     _airbyte_drift_conversations_hashid as _airbyte_hashid
 from {{ ref('drift_conversations_ab3') }}
